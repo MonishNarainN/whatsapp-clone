@@ -73,9 +73,9 @@ export default function MainLayout() {
       {/* Animated Background Orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="mesh-bg absolute inset-0 opacity-10"></div>
-        <div className="absolute top-[10%] left-[10%] w-[500px] h-[500px] bg-green-500 rounded-full mix-blend-screen filter blur-[120px] orb-1 opacity-20"></div>
-        <div className="absolute top-[60%] right-[10%] w-[400px] h-[400px] bg-[#00d4ff] rounded-full mix-blend-screen filter blur-[120px] orb-2 opacity-20"></div>
-        <div className="absolute bottom-[20%] left-[50%] w-[600px] h-[600px] bg-purple-600 rounded-full mix-blend-screen filter blur-[150px] orb-3 opacity-20"></div>
+        <div className="absolute top-[10%] left-[10%] w-[500px] h-[500px] bg-green-500 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[120px] orb-1 opacity-30 dark:opacity-20"></div>
+        <div className="absolute top-[60%] right-[10%] w-[400px] h-[400px] bg-[#00d4ff] rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[120px] orb-2 opacity-30 dark:opacity-20"></div>
+        <div className="absolute bottom-[20%] left-[50%] w-[600px] h-[600px] bg-purple-600 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[150px] orb-3 opacity-30 dark:opacity-20"></div>
       </div>
 
       <div className="flex w-full h-full max-w-[1600px] mx-auto theme-glass rounded-2xl overflow-hidden shadow-2xl relative z-10 border border-gray-300/50 dark:border-gray-700/50">

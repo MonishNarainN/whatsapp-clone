@@ -49,14 +49,14 @@ export default function Auth() {
   };
 
   return (
-    <div className="relative flex items-center justify-center min-h-screen p-4 overflow-hidden bg-[#0a0f1e] text-slate-100">
+    <div className="relative flex items-center justify-center min-h-screen p-4 overflow-hidden bg-slate-50 dark:bg-[#0a0f1e] text-slate-800 dark:text-slate-100 transition-colors duration-300">
       
       {/* Animated Background Orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="mesh-bg absolute inset-0 opacity-10"></div>
-        <div className="absolute top-[20%] left-[20%] w-96 h-96 bg-green-500 rounded-full mix-blend-screen filter blur-[100px] orb-1 opacity-40"></div>
-        <div className="absolute top-[40%] right-[30%] w-80 h-80 bg-[#00d4ff] rounded-full mix-blend-screen filter blur-[100px] orb-2 opacity-40"></div>
-        <div className="absolute bottom-[10%] left-[40%] text-purple-600 w-96 h-96 bg-purple-600 rounded-full mix-blend-screen filter blur-[100px] orb-3 opacity-30"></div>
+        <div className="absolute top-[20%] left-[20%] w-96 h-96 bg-green-500 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[100px] orb-1 opacity-30 dark:opacity-40"></div>
+        <div className="absolute top-[40%] right-[30%] w-80 h-80 bg-[#00d4ff] rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[100px] orb-2 opacity-30 dark:opacity-40"></div>
+        <div className="absolute bottom-[10%] left-[40%] text-purple-600 w-96 h-96 bg-purple-600 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[100px] orb-3 opacity-20 dark:opacity-30"></div>
       </div>
 
       <div className="theme-glass p-8 rounded-3xl w-full max-w-[420px] relative z-10 animate-fade-slide-up shadow-2xl transition-all duration-500" style={{ height: isLogin ? '430px' : '520px' }}>
