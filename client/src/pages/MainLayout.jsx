@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { LogOut, Plus, MessageSquare } from 'lucide-react';
+import { LogOut, Plus, MessageCircle } from 'lucide-react';
 import ChatList from '../components/ChatList';
 import ChatWindow from '../components/ChatWindow';
 import CreateGroupModal from '../components/CreateGroupModal';
