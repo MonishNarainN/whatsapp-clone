@@ -59,7 +59,7 @@ export default function Auth() {
         <div className="absolute bottom-[10%] left-[40%] text-purple-600 w-96 h-96 bg-purple-600 rounded-full mix-blend-screen filter blur-[100px] orb-3 opacity-30"></div>
       </div>
 
-      <div className="dark-glass p-8 rounded-3xl w-full max-w-[420px] relative z-10 animate-fade-slide-up shadow-2xl transition-all duration-500" style={{ height: isLogin ? '430px' : '520px' }}>
+      <div className="theme-glass p-8 rounded-3xl w-full max-w-[420px] relative z-10 animate-fade-slide-up shadow-2xl transition-all duration-500" style={{ height: isLogin ? '430px' : '520px' }}>
         
         {/* Animated Logo */}
         <div className="flex justify-center mb-6">
@@ -68,10 +68,10 @@ export default function Auth() {
           </div>
         </div>
 
-        <h2 className="text-2xl font-semibold mb-2 text-center tracking-tight">
+        <h2 className="text-2xl font-semibold mb-2 text-center tracking-tight text-gray-800 dark:text-white">
           {isLogin ? 'Welcome back' : 'Create an account'}
         </h2>
-        <p className="text-sm text-gray-400 text-center mb-6">
+        <p className="text-sm text-gray-500 dark:text-gray-400 text-center mb-6">
           {isLogin ? 'Enter your details to sign in' : 'Join WhatsApp Web Clone'}
         </p>
 
@@ -84,7 +84,7 @@ export default function Auth() {
             <div className="animate-slide-in-left" style={{ animationDelay: '0ms' }}>
               <input
                 type="text"
-                className="w-full bg-slate-900/50 border border-gray-700/50 p-3 text-white placeholder-gray-500 focus:outline-none focus:border-green-400 transition-all focus:shadow-[0_2px_10px_-2px_rgba(37,211,102,0.4)] rounded-lg"
+                className="w-full bg-slate-100 dark:bg-slate-900/50 border border-gray-300 dark:border-gray-700/50 p-3 text-gray-800 dark:text-white placeholder-gray-500 focus:outline-none focus:border-green-400 transition-all focus:shadow-[0_2px_10px_-2px_rgba(37,211,102,0.4)] rounded-lg"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required={!isLogin}
@@ -96,7 +96,7 @@ export default function Auth() {
           <div className="animate-slide-in-left" style={{ animationDelay: '50ms' }}>
             <input
               type="email"
-              className="w-full bg-slate-900/50 border border-gray-700/50 p-3 text-white placeholder-gray-500 focus:outline-none focus:border-green-400 transition-all focus:shadow-[0_2px_10px_-2px_rgba(37,211,102,0.4)] rounded-lg"
+              className="w-full bg-slate-100 dark:bg-slate-900/50 border border-gray-300 dark:border-gray-700/50 p-3 text-gray-800 dark:text-white placeholder-gray-500 focus:outline-none focus:border-green-400 transition-all focus:shadow-[0_2px_10px_-2px_rgba(37,211,102,0.4)] rounded-lg"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -107,7 +107,7 @@ export default function Auth() {
           <div className="animate-slide-in-left" style={{ animationDelay: '100ms' }}>
             <input
               type="password"
-              className="w-full bg-slate-900/50 border border-gray-700/50 p-3 text-white placeholder-gray-500 focus:outline-none focus:border-green-400 transition-all focus:shadow-[0_2px_10px_-2px_rgba(37,211,102,0.4)] rounded-lg"
+              className="w-full bg-slate-100 dark:bg-slate-900/50 border border-gray-300 dark:border-gray-700/50 p-3 text-gray-800 dark:text-white placeholder-gray-500 focus:outline-none focus:border-green-400 transition-all focus:shadow-[0_2px_10px_-2px_rgba(37,211,102,0.4)] rounded-lg"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -123,9 +123,9 @@ export default function Auth() {
           </button>
         </form>
 
-        <p className="mt-8 text-center text-sm text-gray-400">
+        <p className="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">
           {isLogin ? "Don't have an account? " : "Already have an account? "}
-          <button onClick={toggleMode} type="button" className="text-[#00d4ff] font-medium hover:text-green-400 transition-colors">
+          <button onClick={toggleMode} type="button" className="text-[#00d4ff] font-medium hover:text-green-500 transition-colors">
             {isLogin ? 'Sign up' : 'Log in'}
           </button>
         </p>

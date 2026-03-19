@@ -113,7 +113,7 @@ export default function ChatWindow({ conversation, currentUser, socket, onMessag
   };
 
   return (
-    <div className="flex flex-col h-full bg-[#0a0f1e] relative shadow-inner overflow-hidden">
+    <div className="flex flex-col h-full bg-slate-50 dark:bg-[#0a0f1e] relative shadow-inner overflow-hidden transition-colors duration-300">
       {/* Background noise and textures */}
       <div className="noise-bg mix-blend-overlay"></div>
       
@@ -128,23 +128,23 @@ export default function ChatWindow({ conversation, currentUser, socket, onMessag
               {getChatName()[0]?.toUpperCase()}
             </div>
             {conversation.type !== 'group' && (
-              <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-[#111827]"></div>
+              <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white dark:border-[#111827]"></div>
             )}
           </div>
           <div className="flex flex-col">
-            <div className="font-semibold text-gray-100 text-lg tracking-wide">{getChatName()}</div>
-            <div className={`text-xs font-medium transition-colors ${typingUsers.size > 0 ? 'text-green-400' : 'text-gray-400'}`}>
+            <div className="font-semibold text-gray-800 dark:text-gray-100 text-lg tracking-wide">{getChatName()}</div>
+            <div className={`text-xs font-medium transition-colors ${typingUsers.size > 0 ? 'text-green-500 dark:text-green-400' : 'text-gray-500 dark:text-gray-400'}`}>
               {typingUsers.size > 0 ? 'typing...' : (conversation.type === 'group' ? `${conversation.members.length} members` : 'online')}
             </div>
           </div>
         </div>
         
-        <div className="flex items-center gap-4 text-gray-400">
-          <button className="hover:text-green-400 transition-colors hidden sm:block"><Video size={20} /></button>
-          <button className="hover:text-green-400 transition-colors hidden sm:block"><Phone size={19} /></button>
-          <div className="w-px h-5 bg-gray-700 mx-1 hidden sm:block"></div>
-          <button className="hover:text-gray-200 transition-colors"><Search size={19} /></button>
-          <button className="hover:text-gray-200 transition-colors"><MoreVertical size={20} /></button>
+        <div className="flex items-center gap-4 text-gray-500 dark:text-gray-400">
+          <button className="hover:text-green-500 dark:hover:text-green-400 transition-colors hidden sm:block"><Video size={20} /></button>
+          <button className="hover:text-green-500 dark:hover:text-green-400 transition-colors hidden sm:block"><Phone size={19} /></button>
+          <div className="w-px h-5 bg-gray-300 dark:bg-gray-700 mx-1 hidden sm:block"></div>
+          <button className="hover:text-gray-800 dark:hover:text-gray-200 transition-colors"><Search size={19} /></button>
+          <button className="hover:text-gray-800 dark:hover:text-gray-200 transition-colors"><MoreVertical size={20} /></button>
         </div>
       </div>
 
@@ -156,7 +156,7 @@ export default function ChatWindow({ conversation, currentUser, socket, onMessag
       >
         {messages.length > 0 && (
           <div className="flex justify-center my-6">
-            <div className="dark-glass px-4 py-1.5 rounded-full text-xs text-gray-300 font-medium tracking-wider uppercase shadow-sm">
+            <div className="theme-glass px-4 py-1.5 rounded-full text-xs text-gray-500 dark:text-gray-300 font-medium tracking-wider uppercase shadow-sm">
               Today
             </div>
           </div>
@@ -164,7 +164,7 @@ export default function ChatWindow({ conversation, currentUser, socket, onMessag
 
         {/* Security Notification */}
         <div className="flex justify-center mb-6">
-          <div className="bg-[#1f2937]/70 backdrop-blur-sm border border-yellow-500/20 px-4 py-2 rounded-lg text-xs text-yellow-500/80 font-medium text-center max-w-sm shadow-sm flex items-center gap-2">
+          <div className="bg-white/70 dark:bg-[#1f2937]/70 backdrop-blur-sm border border-yellow-500/20 px-4 py-2 rounded-lg text-xs text-yellow-600 dark:text-yellow-500/80 font-medium text-center max-w-sm shadow-sm flex items-center gap-2">
             <div className="w-4 h-4 rounded bg-yellow-500/20 flex items-center justify-center shrink-0">🔒</div>
             Messages are end-to-end encrypted. Nobody outside of this chat can read them.
           </div>
@@ -185,10 +185,10 @@ export default function ChatWindow({ conversation, currentUser, socket, onMessag
         {/* Typing Indicator Bubble */}
         {typingUsers.size > 0 && (
           <div className="flex justify-start animate-spring-pop w-full mb-2">
-            <div className="dark-glass rounded-2xl rounded-tl-none px-4 py-3 shadow-md flex space-x-1.5 items-center">
-              <div className="w-2 h-2 bg-green-400 rounded-full typing-dot"></div>
-              <div className="w-2 h-2 bg-green-400 rounded-full typing-dot"></div>
-              <div className="w-2 h-2 bg-green-400 rounded-full typing-dot"></div>
+            <div className="theme-glass rounded-2xl rounded-tl-none px-4 py-3 shadow-md flex space-x-1.5 items-center">
+              <div className="w-2 h-2 bg-green-500 dark:bg-green-400 rounded-full typing-dot"></div>
+              <div className="w-2 h-2 bg-green-500 dark:bg-green-400 rounded-full typing-dot"></div>
+              <div className="w-2 h-2 bg-green-500 dark:bg-green-400 rounded-full typing-dot"></div>
             </div>
           </div>
         )}
@@ -201,7 +201,7 @@ export default function ChatWindow({ conversation, currentUser, socket, onMessag
       {showScrollDown && (
         <button 
           onClick={() => scrollToBottom()}
-          className="absolute bottom-24 right-6 z-30 w-10 h-10 rounded-full dark-glass flex items-center justify-center text-gray-300 hover:text-white hover:bg-gray-800 transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.5)] animate-pop-in border border-gray-600/50"
+          className="absolute bottom-24 right-6 z-30 w-10 h-10 rounded-full theme-glass flex items-center justify-center text-gray-500 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800 transition-all duration-300 shadow-md animate-pop-in"
         >
           <ChevronDown size={24} />
         </button>

@@ -65,32 +65,32 @@ export default function CreateGroupModal({ onClose, currentUser, onGroupCreated 
   };
 
   return (
-    <div className="fixed inset-0 bg-[#0a0f1e]/80 backdrop-blur-md flex justify-center items-end sm:items-center z-50 p-4 sm:p-0">
+    <div className="fixed inset-0 bg-slate-900/60 dark:bg-[#0a0f1e]/80 backdrop-blur-md flex justify-center items-end sm:items-center z-50 p-4 sm:p-0 transition-colors duration-300">
       {/* Container slides up from bottom */}
-      <div className="dark-glass shadow-2xl rounded-t-3xl sm:rounded-3xl p-6 w-full max-w-[450px] max-h-[85vh] flex flex-col relative animate-fade-slide-up border border-gray-700/50">
+      <div className="theme-glass shadow-2xl rounded-t-3xl sm:rounded-3xl p-6 w-full max-w-[450px] max-h-[85vh] flex flex-col relative animate-fade-slide-up border border-gray-200 dark:border-gray-700/50">
         
         <button 
           onClick={onClose} 
-          className="absolute top-5 right-5 w-8 h-8 rounded-full bg-gray-800/50 text-gray-400 hover:text-white hover:bg-gray-700 flex items-center justify-center transition-all z-10"
+          className="absolute top-5 right-5 w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-800/50 text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white hover:bg-gray-300 dark:hover:bg-gray-700 flex items-center justify-center transition-all z-10"
         >
           <X size={18} />
         </button>
         
-        <h2 className="text-2xl font-bold mb-1 text-white tracking-wide">New Chat</h2>
-        <p className="text-sm text-gray-400 mb-5">Start a conversation</p>
+        <h2 className="text-2xl font-bold mb-1 text-gray-900 dark:text-white tracking-wide">New Chat</h2>
+        <p className="text-sm text-gray-500 dark:text-gray-400 mb-5">Start a conversation</p>
         
-        {error && <p className="text-red-400 text-sm mb-4 bg-red-500/10 border border-red-500/20 p-2 rounded-lg animate-pop-in">{error}</p>}
+        {error && <p className="text-red-500 dark:text-red-400 text-sm mb-4 bg-red-100 dark:bg-red-500/10 border border-red-200 dark:border-red-500/20 p-2 rounded-lg animate-pop-in">{error}</p>}
 
         {/* Selected Members Chips Horizontal Scroll */}
         {selectedUsers.length > 0 && (
           <div className="flex overflow-x-auto py-2 mb-4 space-x-2 scrollbar-hide shrink-0 animate-fade-slide-up">
             {getSelectedUserDetails().map(u => (
-              <div key={u._id} className="flex items-center bg-[#1f2937] border border-green-500/30 rounded-full pl-1 pr-3 py-1 shrink-0 animate-pop-in shadow-[0_2px_10px_rgba(37,211,102,0.15)]">
+              <div key={u._id} className="flex items-center bg-white dark:bg-[#1f2937] border border-green-500/30 rounded-full pl-1 pr-3 py-1 shrink-0 animate-pop-in shadow-[0_2px_10px_rgba(37,211,102,0.15)]">
                 <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-green-500 to-[#00d4ff] flex items-center justify-center text-white text-[10px] font-bold mr-2">
                   {u.username[0].toUpperCase()}
                 </div>
-                <span className="text-xs text-gray-200 font-medium mr-2">{u.username.split(' ')[0]}</span>
-                <button onClick={() => toggleUser(u._id)} className="text-gray-400 hover:text-red-400 rounded-full p-0.5">
+                <span className="text-xs text-gray-800 dark:text-gray-200 font-medium mr-2">{u.username.split(' ')[0]}</span>
+                <button onClick={() => toggleUser(u._id)} className="text-gray-400 hover:text-red-500 dark:hover:text-red-400 rounded-full p-0.5">
                   <X size={12} />
                 </button>
               </div>
@@ -99,11 +99,11 @@ export default function CreateGroupModal({ onClose, currentUser, onGroupCreated 
         )}
 
         {/* Create Group Form */}
-        <div className="mb-4 pb-4 border-b border-gray-700/50 shrink-0">
+        <div className="mb-4 pb-4 border-b border-gray-200 dark:border-gray-700/50 shrink-0">
           <input
             type="text"
             placeholder="Group Subject"
-            className="w-full bg-[#1f2937]/50 border border-gray-700 rounded-xl p-3.5 focus:outline-none focus:border-green-500 focus:shadow-[0_0_15px_rgba(37,211,102,0.2)] transition-all mb-3 text-sm text-gray-100 placeholder-gray-500"
+            className="w-full bg-slate-50 dark:bg-[#1f2937]/50 border border-gray-300 dark:border-gray-700 rounded-xl p-3.5 focus:outline-none focus:border-green-500 focus:shadow-[0_0_15px_rgba(37,211,102,0.2)] transition-all mb-3 text-sm text-gray-800 dark:text-gray-100 placeholder-gray-500"
             value={groupName}
             onChange={(e) => setGroupName(e.target.value)}
           />
@@ -119,7 +119,7 @@ export default function CreateGroupModal({ onClose, currentUser, onGroupCreated 
 
         {/* User List */}
         <div className="flex justify-between items-center mb-3 shrink-0">
-          <h3 className="font-semibold text-gray-400 text-xs tracking-wider uppercase">Contacts on WhatsApp</h3>
+          <h3 className="font-semibold text-gray-500 dark:text-gray-400 text-xs tracking-wider uppercase">Contacts on WhatsApp</h3>
         </div>
 
         <div className="overflow-y-auto flex-1 pr-2 -mr-2 space-y-1.5 scroll-smooth custom-scrollbar">
@@ -132,16 +132,16 @@ export default function CreateGroupModal({ onClose, currentUser, onGroupCreated 
                 <div 
                   key={u._id} 
                   className={`flex justify-between items-center p-3 rounded-xl border transition-all duration-200 cursor-pointer ${
-                    isSelected ? 'bg-[#1f2937] border-green-500/50 shadow-[0_0_15px_rgba(37,211,102,0.1)]' : 'bg-transparent border-transparent hover:bg-[#1f2937]/50'
+                    isSelected ? 'bg-gray-100 dark:bg-[#1f2937] border-green-500/50 shadow-[0_0_15px_rgba(37,211,102,0.1)]' : 'bg-transparent border-transparent hover:bg-gray-50 dark:hover:bg-[#1f2937]/50'
                   }`}
                   onClick={() => toggleUser(u._id)}
                 >
                   <div className="flex items-center space-x-3">
-                    <div className={`w-11 h-11 rounded-full flex items-center justify-center text-white font-bold shadow-sm transition-transform duration-300 ${isSelected ? 'scale-105 bg-gradient-to-tr from-green-500 to-[#00d4ff]' : 'bg-gradient-to-tr from-gray-700 to-gray-600'}`}>
+                    <div className={`w-11 h-11 rounded-full flex items-center justify-center text-white font-bold shadow-sm transition-transform duration-300 ${isSelected ? 'scale-105 bg-gradient-to-tr from-green-500 to-[#00d4ff]' : 'bg-gradient-to-tr from-gray-400 to-gray-300 dark:from-gray-700 dark:to-gray-600'}`}>
                       {u.username[0].toUpperCase()}
                     </div>
                     <div>
-                      <p className={`font-medium transition-colors ${isSelected ? 'text-green-400' : 'text-gray-200'}`}>{u.username}</p>
+                      <p className={`font-medium transition-colors ${isSelected ? 'text-green-600 dark:text-green-400' : 'text-gray-800 dark:text-gray-200'}`}>{u.username}</p>
                       <p className="text-xs text-gray-500">{u.email}</p>
                     </div>
                   </div>
@@ -149,12 +149,12 @@ export default function CreateGroupModal({ onClose, currentUser, onGroupCreated 
                   <div className="flex items-center space-x-3" onClick={(e) => e.stopPropagation()}>
                     <button 
                       onClick={() => handleCreateDM(u._id)}
-                      className="bg-gray-800 text-gray-300 text-[11px] font-medium px-3.5 py-1.5 rounded-full hover:bg-green-500 hover:text-white transition-all shadow-sm active:scale-95 border border-gray-700 hover:border-transparent"
+                      className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-[11px] font-medium px-3.5 py-1.5 rounded-full hover:bg-green-500 hover:text-white dark:hover:bg-green-500 transition-all shadow-sm active:scale-95 border border-gray-300 dark:border-gray-700 hover:border-transparent"
                     >
                       Message
                     </button>
                     <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all cursor-pointer ${
-                      isSelected ? 'bg-green-500 border-green-500 shadow-[0_0_8px_rgba(37,211,102,0.6)] animate-pop-in' : 'border-gray-600 bg-gray-800/50'
+                      isSelected ? 'bg-green-500 border-green-500 shadow-[0_0_8px_rgba(37,211,102,0.6)] animate-pop-in' : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800/50'
                     }`} onClick={() => toggleUser(u._id)}>
                       {isSelected && <Check size={12} strokeWidth={3} className="text-white" />}
                     </div>
