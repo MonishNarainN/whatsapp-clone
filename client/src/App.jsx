@@ -1,8 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthContext, AuthProvider } from './context/AuthContext';
-import Login from './pages/Login';
-import Register from './pages/Register';
+import Auth from './pages/Auth';
 import MainLayout from './pages/MainLayout';
 
 const ProtectedRoute = ({ children }) => {
@@ -15,8 +14,8 @@ function App() {
     <AuthProvider>
       <Router>
         <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Auth />} />
+          <Route path="/register" element={<Auth />} />
           <Route
             path="/"
             element={

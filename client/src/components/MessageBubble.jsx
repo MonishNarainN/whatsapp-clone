@@ -3,37 +3,36 @@ import { format } from 'date-fns';
 
 export default function MessageBubble({ message, currentUser, conversationType }) {
   const isMine = message.sender && (message.sender._id === currentUser._id || message.sender === currentUser._id);
-  
-  // Format time
-  let timeString = '';
-  if (message.createdAt) {
-    try {
-      timeString = format(new Date(message.createdAt), 'HH:mm');
-    } catch(e) {}
-  }
 
   return (
-    <div className={`message-bubble-container max-w-[75%] flex flex-col ${isMine ? 'items-end' : 'items-start'} group hover:scale-[1.02] transform transition-transform duration-200 cursor-default`}>
+    <div className={`flex flex-col mb-1 max-w-[75%] message-bubble-container animate-spring-pop transform transition-transform hover:scale-[1.01] duration-200 ${isMine ? 'items-end' : 'items-start'}`}>
+      
+      {/* Sender name for group chats if not mine */}
+      {!isMine && conversationType === 'group' && message.sender?.username && (
+        <span className="text-xs text-green-400 font-medium ml-2 mb-1">
+          {message.sender.username}
+        </span>
+      )}
+
+      {/* Bubble */}
       <div 
-        className={`rounded-2xl px-4 py-2.5 shadow-sm border ${
+        className={`px-4 py-2 text-[14.5px] leading-relaxed relative group ${
           isMine 
-            ? 'bg-gradient-to-br from-[#dcf8c6] to-[#c1f0a1] rounded-tr-none border-[#bce2a4]' 
-            : 'bg-white rounded-tl-none border-gray-100'
+            ? 'bg-gradient-to-r from-[#25D366] to-[#00d4ff] text-white rounded-2xl rounded-tr-none shadow-[0_4px_15px_rgba(37,211,102,0.25)] border border-green-400/20' 
+            : 'dark-glass text-gray-100 rounded-2xl rounded-tl-none'
         }`}
       >
-        {!isMine && conversationType === 'group' && message.sender?.username && (
-          <div className="text-[11px] font-bold text-green-600 mb-1 tracking-wide uppercase">
-            {message.sender.username}
-          </div>
-        )}
-        <div className="text-[15px] text-gray-800 break-words leading-relaxed">
-          {message.text}
+        <p className="whitespace-pre-wrap break-words">{message.text}</p>
+        
+        {/* Timestamp on hover */}
+        <div className={`timestamp-hover text-[11px] ${isMine ? 'text-white/80 text-right' : 'text-gray-400 text-right'} flex items-center justify-end gap-1 font-medium tracking-wide`}>
+          {format(new Date(message.createdAt), 'HH:mm')}
+          {isMine && (
+            <svg className="w-3.5 h-3.5 text-white/90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+          )}
         </div>
-      </div>
-      
-      {/* Hover timestamp */}
-      <div className={`text-[11px] text-gray-500 font-medium timestamp-hover ${isMine ? 'pr-2' : 'pl-2'}`}>
-        {timeString}
       </div>
     </div>
   );
