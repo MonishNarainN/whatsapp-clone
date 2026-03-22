@@ -16,6 +16,8 @@ A premium, full-featured WhatsApp Web clone built with a modern tech stack. This
 * **Group Chat Support**: Create groups, manage members, and track read status per-user.
 - **Rich Media Support**: Upload and share images, videos, and documents seamlessly.
 - **Voice Messages**: Record and send audio messages with a premium player interface.
+- **Message Info Panel**: A detailed, real-time slide-in panel showing exactly when messages were **Delivered** and **Read**.
+- **Group Status Tracking**: Track individual delivery and read status for every member in a group chat.
 - **Message Editing & Deletion**: Edit sent messages or delete them (for me or for everyone).
 - **Reply System**: Contextual replies to specific messages with quick-jump functionality.
 - **Starred Messages**: Save important messages for quick access.
@@ -28,6 +30,7 @@ A premium, full-featured WhatsApp Web clone built with a modern tech stack. This
 
 ### 🎨 User Interface & UX
 - **Stunning UI**: A sleek, glassmorphic design with Tailwind CSS and custom animations.
+- **Official WhatsApp Palette**: Implemented the official light and dark mode color schemes for bubbles and text to ensure premium aesthetics and legibility.
 - **Dark Mode**: Fully supports high-contrast dark mode for eye comfort.
 - **Unread Indicators**: Smart badges and an "X Unread Messages" divider in chats.
 - **Typing Indicators**: See when others are typing in real-time.
