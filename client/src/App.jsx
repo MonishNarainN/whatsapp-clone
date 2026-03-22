@@ -6,7 +6,16 @@ import Auth from './pages/Auth';
 import MainLayout from './pages/MainLayout';
 
 const ProtectedRoute = ({ children }) => {
-  const { user } = React.useContext(AuthContext);
+  const { user, loading } = React.useContext(AuthContext);
+  
+  if (loading) {
+    return (
+      <div className="h-screen w-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-500"></div>
+      </div>
+    );
+  }
+  
   return user ? children : <Navigate to="/login" />;
 };
 

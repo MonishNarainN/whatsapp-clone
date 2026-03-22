@@ -1,81 +1,96 @@
-# WhatsApp Web Clone
+# 📱 WhatsApp Web Clone - Full Stack
 
-A full-stack WhatsApp Web clone built with React, Node.js, Express, MongoDB, and Socket.IO.
-This project implements real-time messaging, user authentication, and group chat capabilities.
+A premium, full-featured WhatsApp Web clone built with a modern tech stack. This project demonstrates advanced real-time communication, robust data management, and a high-fidelity user interface.
 
-## Features
-- **User Authentication**: Register and login securely using JWT and bcrypt.
-- **Real-time Messaging**: Socket.IO enables instant messaging without page reloads.
-- **Direct Messages & Group Chats**: Support for one-on-one and multi-user group conversations.
-- **Message Readability**: Auto-scroll to latest messages, visual differentiation of sent/received messages.
-- **Modern UI**: Styled with Tailwind CSS for a clean, responsive layout resembling WhatsApp Web.
+> [!IMPORTANT]
+> This project was built as a Full Stack Developer Task, focusing on performance, UX, and real-time reliability.
 
-## Prerequisites
-- Node.js (v16+ recommended)
-- MongoDB running locally or a MongoDB connection string (e.g., MongoDB Atlas)
+## ✨ Premium Features
 
-## Getting Started
+### 📨 Messaging Experience
+- **Real-time Chat**: Powered by Socket.IO for sub-millisecond message delivery.
+* **Advanced Read Receipts**: 
+  - Single grey tick (Sent)
+  - Double grey ticks (Delivered to recipient)
+  - Double green ticks (Read by recipient)
+* **Group Chat Support**: Create groups, manage members, and track read status per-user.
+- **Rich Media Support**: Upload and share images, videos, and documents seamlessly.
+- **Voice Messages**: Record and send audio messages with a premium player interface.
+- **Message Editing & Deletion**: Edit sent messages or delete them (for me or for everyone).
+- **Reply System**: Contextual replies to specific messages with quick-jump functionality.
+- **Starred Messages**: Save important messages for quick access.
 
-### 1. Database Setup
-Ensure MongoDB is running locally on port 27017, or set the `MONGO_URI` environment variable.
+### 🛡️ Privacy & Control
+- **Disappearing Messages**: Set self-destruct timers (24h, 7d, 90d) for conversations.
+- **Mute Notifications**: Silence busy conversations for specific durations.
+- **User Blocking**: Block/unblock users to control who can message you.
+- **Presence Tracking**: Real-time Online/Offline status and "Last Seen" timestamps.
 
-### 2. Backend Setup (`/server`)
+### 🎨 User Interface & UX
+- **Stunning UI**: A sleek, glassmorphic design with Tailwind CSS and custom animations.
+- **Dark Mode**: Fully supports high-contrast dark mode for eye comfort.
+- **Unread Indicators**: Smart badges and an "X Unread Messages" divider in chats.
+- **Typing Indicators**: See when others are typing in real-time.
+- **Emoji Support**: Integrated emoji picker for expressive messaging.
 
-1. Navigate to the server folder:
-   ```bash
-   cd server
+---
+
+## 🛠️ Technology Stack
+
+| Layer | Technology |
+|---|---|
+| **Frontend** | React (Vite), Tailwind CSS, Lucide Icons, Axios |
+| **Backend** | Node.js, Express, Socket.IO |
+| **Database** | MongoDB (Mongoose) |
+| **Auth** | JWT (JSON Web Tokens), Bcrypt.js |
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (v18+)
+- MongoDB (Local or Atlas)
+
+### 1. Backend Setup (`/server`)
+1. `cd server`
+2. `npm install`
+3. Create `.env` file:
+   ```env
+   MONGO_URI=mongodb://127.0.0.1:27017/whatsapp-clone
+   JWT_SECRET=your_jwt_secret
+   PORT=5000
    ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Create a `.env` file based on the provided `.env.example`:
-   ```bash
-   cp .env.example .env
-   ```
-   *Required variables: `MONGO_URI`, `JWT_SECRET`, `PORT`*
-4. Run the server:
-   ```bash
-   npm run dev
-   ```
-   The backend should now be running on `http://localhost:5000`.
+4. `npm run dev`
 
-### 3. Frontend Setup (`/client`)
+### 2. Frontend Setup (`/client`)
+1. `cd client`
+2. `npm install`
+3. Create `.env` file:
+   ```env
+   VITE_REACT_APP_API_URL=http://localhost:5000/api
+   VITE_REACT_APP_SOCKET_URL=http://localhost:5000
+   ```
+4. `npm run dev`
 
-1. Navigate to the client folder:
-   ```bash
-   cd client
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Create a `.env` file based on `.env.example`:
-   ```bash
-   cp .env.example .env
-   ```
-   *Required variables: `REACT_APP_API_URL`, `REACT_APP_SOCKET_URL`*
-4. Run the frontend development server:
-   ```bash
-   npm run dev
-   ```
-   The React app should now be running on `http://localhost:5173`.
+---
 
-## Environment Variables
-
-### Server (`server/.env.example`)
-```env
-MONGO_URI=mongodb://127.0.0.1:27017/whatsapp-clone
-JWT_SECRET=supersecretkey
-PORT=5000
+## 📂 Project Structure
+```text
+├── client/              # React frontend
+│   ├── src/
+│   │   ├── components/  # Reusable UI components
+│   │   ├── pages/       # Layouts and screen views
+│   │   └── context/     # Auth and state management
+└── server/              # Node.js backend
+    ├── models/          # Mongoose schemas
+    ├── routes/          # API endpoints
+    └── server.js        # Socket.IO & entry point
 ```
 
-### Client (`client/.env.example`)
-```env
-REACT_APP_API_URL=http://localhost:5000/api
-REACT_APP_SOCKET_URL=http://localhost:5000
-```
+## 📜 Development Notes
+- **UserConversation Model**: Implemented for high-performance retrieval of user-specific metadata (pinned status, unread counts).
+- **Socket delivery logic**: Optimized to mark messages "delivered" only when users connect, and "read" immediately if they are in the active chat.
 
-## Project Structure
-- `/client`: React frontend using Vite, Tailwind CSS, Axios, React Router.
-- `/server`: Node.js Express backend with Mongoose and Socket.IO.
+---
+Created by Monish Narain N for the Full Stack Developer Technical Task.
