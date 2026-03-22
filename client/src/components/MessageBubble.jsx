@@ -29,25 +29,30 @@ export default function MessageBubble({ message, currentUser, conversationType, 
     }
 
     const status = message.status || 'sent';
+    
+    // Status colors for ticks on the bubble's green background
+    const readColor = "text-[#53bdeb]"; // Bright WhatsApp blue
+    const deliveredColor = "text-white/70"; // Semi-transparent white
+    const sentColor = "text-white/60"; // Slightly more transparent white
 
     if (status === 'read') {
       return (
-        <svg className="w-3.5 h-3.5 text-[#25D366] transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7 M5 17l4 4L19 11" />
+        <svg className={`w-3.5 h-3.5 ${readColor} transition-colors duration-300 shadow-sm`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7 M5 17l4 4L19 11" />
         </svg>
       );
     }
     
     if (status === 'delivered') {
       return (
-        <svg className="w-3.5 h-3.5 text-gray-400 dark:text-gray-500 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg className={`w-3.5 h-3.5 ${deliveredColor} transition-colors duration-300`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7 M5 17l4 4L19 11" />
         </svg>
       );
     }
     
     return (
-      <svg className="w-3.5 h-3.5 text-gray-400 dark:text-gray-500 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <svg className={`w-3.5 h-3.5 ${sentColor} transition-colors duration-300`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
       </svg>
     );
@@ -153,9 +158,9 @@ export default function MessageBubble({ message, currentUser, conversationType, 
         <div 
           className={`px-4 py-2 text-[14.5px] leading-relaxed relative ${
             isMine 
-              ? 'bg-gradient-to-r from-[#25D366] to-[#00d4ff] text-white rounded-2xl rounded-tr-none shadow-[0_4px_15px_rgba(37,211,102,0.25)] border border-green-400/20' 
+              ? 'bg-gradient-to-br from-[#06d755] to-[#02b3a4] text-white rounded-2xl rounded-tr-none shadow-[0_4px_12px_rgba(6,215,85,0.3)] border border-white/10' 
               : 'received-bubble rounded-2xl rounded-tl-none'
-          } ${message.deleted ? 'opacity-70 italic shadow-none border-none from-gray-300 to-gray-400 dark:from-gray-700 dark:to-gray-800' : ''}`}
+          } ${message.deleted ? 'opacity-70 italic shadow-none border-none bg-gray-200 dark:bg-gray-800 text-gray-500 dark:text-gray-400' : ''}`}
         >
           {message.deleted ? (
             <div className="flex items-center gap-2 text-black/60 dark:text-white/60 text-sm font-medium">
@@ -250,7 +255,7 @@ export default function MessageBubble({ message, currentUser, conversationType, 
           
           <div className="flex items-center justify-end gap-1.5 mt-1">
             {message.isEdited && !message.deleted && (
-              <span className="text-[10.5px] text-black/40 dark:text-white/40 italic font-medium tracking-wide mr-1">edited</span>
+              <span className={`text-[10px] ${isMine ? 'text-white/60' : 'text-gray-400 dark:text-gray-500'} italic font-bold tracking-wide mr-1`}>edited</span>
             )}
             {message.expiresAt && !message.deleted && (
               <Clock size={10} className={`${isMine ? 'text-white/40' : 'text-black/30 dark:text-white/30'} mr-0.5`} />
