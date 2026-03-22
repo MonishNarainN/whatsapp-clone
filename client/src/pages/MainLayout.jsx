@@ -122,12 +122,10 @@ export default function MainLayout() {
   };
 
   const handleUpdateUser = (updatedUser) => {
+    // Update the global AuthContext state which triggers re-renders in all components
+    updateUser(updatedUser);
     // Refresh conversations because user data might be part of them
     fetchConversations();
-    // Update local context/state (AuthContext handles the source of truth, but we can nudge it if needed or just rely on fetch)
-    // If the AuthContext provides a method to update user, we should use it.
-    // Assuming user is read-only here, we rely on the next refresh or context update.
-    // However, for immediate UI feedback, we can try to update the local 'user' if it's mirrored.
   };
 
   const handleClearChat = async () => {
